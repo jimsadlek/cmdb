@@ -1,5 +1,9 @@
+/**
+ * @param {Any} host
+ *
+ * @return {Any}
+ */
 (function (host) {
-
 	var RestClient = function () {}
 
 	function bundleResponse(content, statusCode) {
@@ -53,4 +57,4 @@
 	}
 
 	return RestClient;
-})
+});

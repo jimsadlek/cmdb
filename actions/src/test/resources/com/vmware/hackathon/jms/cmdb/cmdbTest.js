@@ -2,6 +2,9 @@ describe("CMDB Tests", function() {
 	var Class = System.getModule("com.vmware.pscoe.library.class").Class();
 	var CmdbFactory = Class.load("com.vmware.hackathon.jms.cmdb","CmdbFactory");
 
+	var username = "myusername";
+	var password = "mypassword";
+	var endpointName = "endpointName";
 	var name = "jms";
 	var size = "28"
 	var id = "99";
@@ -13,7 +16,7 @@ describe("CMDB Tests", function() {
 
 	it("Kangaroo test",function(){
 		var factory = new CmdbFactory();
-		var cmdb = factory.getCmdb("kangaroo","http://kangaroo.cba.com","/api/record");
+		var cmdb = factory.getCmdb("kangaroo",endpointName, username, password);
 		
 		expect(cmdb.Add(name,size)).toBe('200:http://kangaroo.cba.com/api/record:{"name":"jms","size":"28"}');
 		expect(cmdb.Delete(id)).toBe('200:http://kangaroo.cba.com/api/record/99');
@@ -21,7 +24,7 @@ describe("CMDB Tests", function() {
 
 	it("Platypus test",function(){
 		var factory = new CmdbFactory();
-		var cmdb = factory.getCmdb("Platypus","http://platypus.cba.com/","api/transaction/create");
+		var cmdb = factory.getCmdb("Platypus",endpointName, username, password);
 
 		expect(cmdb.Add(name,size)).toBe('200:http://platypus.cba.com/api/transaction/commit:{"transactionId":1}');
 		//expect(cmdb.Delete(name,size)).toBe('200:http://platypus.cba.com/api/transaction/commit:{"transactionId":5}');
@@ -29,7 +32,7 @@ describe("CMDB Tests", function() {
 
 	it("Wombat test",function(){
 		var factory = new CmdbFactory();
-		var cmdb = factory.getCmdb("wombat", "http://wombat.cba.com/","cmdb/v1/record");
+		var cmdb = factory.getCmdb("wombat", endpointName, username, password);
 
 		expect(cmdb.Add(name,size)).toBe("200:http://wombat.cba.com/cmdb/v1/record:"+expectedXml);
 		expect(cmdb.Delete(id)).toBe('200:http://wombat.cba.com/cmdb/v1/record:'+expectedXml2);

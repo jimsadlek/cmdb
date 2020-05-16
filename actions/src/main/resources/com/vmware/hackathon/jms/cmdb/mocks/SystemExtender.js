@@ -1,5 +1,7 @@
+/**
+ * @return {Any}
+ */
 (function () {
-
 	var SystemExtender = (function () {
 		var Original = System;
 		var methods = {
@@ -70,4 +72,4 @@
 	}())
 
 	return SystemExtender;
-})
+});

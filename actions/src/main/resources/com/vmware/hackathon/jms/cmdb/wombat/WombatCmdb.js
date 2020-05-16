@@ -11,8 +11,12 @@
 	RestClient.prototype.delete = function(urlTemplate,params,content){return "200:"+urlTemplate;}
 	RestClient.prototype.post = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+content.toString();}
 
-	return Class.define(function WombatCmdb(urlBase,urlOperation){
-		CmdbBase.call(this,urlBase,urlOperation);
+	System.log("WombatCmdb");
+
+	return Class.define(function WombatCmdb(endpointName, username, password){
+		CmdbBase.call(this,endpointName, username, password);
+		this.urlBase = "http://wombat.cba.com/";
+		this.urlOperation = "cmdb/v1/record";
 		this.Init();
 
 	}, null, CmdbBase);

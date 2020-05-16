@@ -10,10 +10,15 @@
 	RestClient.prototype.post = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+content;}
 	RestClient.prototype.put = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+JSON.stringify(content);}
 	RestClient.prototype.delete = function(urlTemplate,params,content){return "200:"+urlTemplate;}
-	
-	return Class.define(function PlatypusCmdb(urlBase,urlOperation){
-		CmdbBase.call(this,urlBase,urlOperation);
+
+	System.log("PlatypusCmdb");
+
+	return Class.define(function PlatypusCmdb(endpointName, username, password){
+		CmdbBase.call(this,endpointName, username, password);
+		this.urlBase = "http://platypus.cba.com/";
+		this.urlOperation = "api/transaction/create";
 		this.Init();
+
 		this.restClient = new RestClient(this.restHost);
 
 		this.Commit = function(transactionId){
@@ -21,7 +26,7 @@
 			var data = {"transactionId" : transactionId	};
 			return this.restClient.post(this.url, [], JSON.stringify(data));
 		}
-	
+
 		this.Add = function(name,size){
 			var data = { "name":name,"size":size };
 			this.restClient.post(this.url, [], data);
