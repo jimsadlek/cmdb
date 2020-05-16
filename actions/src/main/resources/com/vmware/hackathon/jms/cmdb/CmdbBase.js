@@ -3,34 +3,39 @@
  */
 (function () {
 	var Class = System.getModule("com.vmware.pscoe.library.class").Class();
-	//System = System.getModule("com.vmware.hackathon.jms.cmdb.mocks").SystemExtender().mockSystem();
-	//System.getContext = function() { return undefined; }
+	var RestHostFactory = {};	
+	RestHostFactory.newHostWithBasicAuth = function(url,endpointName,username,password)	{return {};	}
+	RestClient = function(restHost){this.restHost = restHost;};
+	RestClient.prototype.put = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+JSON.stringify(content);}
+	RestClient.prototype.delete = function(urlTemplate,params,content){return "200:"+urlTemplate;}
+	RestClient.prototype.post = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+content.toString();}
 	
-
-	return Class.define(function CmdbBase(urlBase){
+	return Class.define(function CmdbBase(urlBase,urlOperation){
 		// Private
-		//var RestHostFactory = System.getModule("com.vmware.pscoe.library.rest").RestHostFactory();
-		//var RestClient = System.getModule("com.vmware.pscoe.library.rest").RestClient();
 		
 		// Public 
 		this.username = "myusername";
 		this.password = "mypassword";
 		this.endpointName = "endpointName";
 		this.urlBase = urlBase;
+		this.urlOperation = urlOperation;
 		this.url = "Default URL";
+		
 		this.Init = function(){
 			this.url = this.urlBase + this.urlOperation;
 			this.restHost = RestHostFactory.newHostWithBasicAuth(this.url, this.endpointName, this.username, this.password);
 		}
 			
-		this.Add = function(name,size) {
-			//restClient = new RestClient(this.restHost);
-			
-			//restClient.put(this.url, [], this.data);
-			return "Add: "+this.url;
+		this.Add = function(name,size){
+			var data = new XML('<CreateRecord><Name>'+name+'</Name><Size>'+size+'</Size></CreateRecord>');
+			var restClient = new RestClient(this.restHost);
+			return restClient.post(this.url, [], data);
 		}
-		this.Delete = function(id) {
-			return "Delete: "+this.url; 
-		}
+
+		this.Delete = function(id){
+			var data = new XML('<DeleteRecord><Id>'+id+'</Id></DeleteRecord>');
+			var restClient = new RestClient(this.restHost);
+			return restClient.post(this.url, [], data);
+		}		
 	}, null, null);
 });

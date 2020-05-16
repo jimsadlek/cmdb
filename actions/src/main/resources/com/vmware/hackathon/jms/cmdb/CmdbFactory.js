@@ -9,13 +9,13 @@
 	var WombatCmdb = Class.load("com.vmware.hackathon.jms.cmdb.wombat", "WombatCmdb");
 
 	return Class.define(function CmdbFactory() {
-		this.getCmdb = function(cmdbType, urlBase) {
+		this.getCmdb = function(cmdbType, urlBase, urlOperation) {
 			if(cmdbType.toLowerCase() === "platypus") {
-				return new PlatypusCmdb(urlBase);
+				return new PlatypusCmdb(urlBase, urlOperation);
 			} else if(cmdbType.toLowerCase() === "kangaroo") {
-				return new KangarooCmdb(urlBase);
+				return new KangarooCmdb(urlBase, urlOperation);
 			} else if(cmdbType.toLowerCase() === "wombat") {
-				return new WombatCmdb(urlBase);
+				return new WombatCmdb(urlBase, urlOperation);
 			}
 
 			throw "Unknown cmdbType " + cmdbType + "!";
