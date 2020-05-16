@@ -8,8 +8,7 @@
 	RestHostFactory.newHostWithBasicAuth = function(url,endpointName,username,password)	{return {};	}
 	RestClient = function(restHost){this.restHost = restHost;};
 	RestClient.prototype.put = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+JSON.stringify(content);}
-	RestClient.prototype.delete = function(urlTemplate,params,content){return "200:"+urlTemplate;}
-
+	
 	return Class.define(function KangarooCmdb(urlBase,urlOperation){
 		CmdbBase.call(this,urlBase,urlOperation);
 		this.Init();

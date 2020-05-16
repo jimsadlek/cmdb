@@ -23,7 +23,8 @@ describe("CMDB Tests", function() {
 		var factory = new CmdbFactory();
 		var cmdb = factory.getCmdb("Platypus","http://platypus.cba.com/","api/transaction/create");
 
-		expect(cmdb.Add(name,size)).toBe('200:http://platypus.cba.com/api/transaction/create:{"name":"jms","size":"28"}');
+		expect(cmdb.Add(name,size)).toBe('200:http://platypus.cba.com/api/transaction/commit:{"transactionId":1}');
+		//expect(cmdb.Delete(name,size)).toBe('200:http://platypus.cba.com/api/transaction/commit:{"transactionId":5}');
 	});
 
 	it("Wombat test",function(){

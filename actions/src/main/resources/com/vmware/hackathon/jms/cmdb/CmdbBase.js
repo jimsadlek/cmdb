@@ -6,8 +6,8 @@
 	var RestHostFactory = {};	
 	RestHostFactory.newHostWithBasicAuth = function(url,endpointName,username,password)	{return {};	}
 	RestClient = function(restHost){this.restHost = restHost;};
-	RestClient.prototype.put = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+JSON.stringify(content);}
 	RestClient.prototype.delete = function(urlTemplate,params,content){return "200:"+urlTemplate;}
+	//RestClient.prototype.post = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+JSON.stringify(content);}
 	RestClient.prototype.post = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+content.toString();}
 	
 	return Class.define(function CmdbBase(urlBase,urlOperation){
@@ -20,7 +20,7 @@
 		this.urlBase = urlBase;
 		this.urlOperation = urlOperation;
 		this.url = "Default URL";
-		
+
 		this.Init = function(){
 			this.url = this.urlBase + this.urlOperation;
 			this.restHost = RestHostFactory.newHostWithBasicAuth(this.url, this.endpointName, this.username, this.password);

@@ -7,24 +7,37 @@
 	var RestHostFactory = {};	
 	RestHostFactory.newHostWithBasicAuth = function(url,endpointName,username,password)	{return {};	}
 	RestClient = function(restHost){this.restHost = restHost;};
-	RestClient.prototype.put = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+content.toString();}
+	RestClient.prototype.post = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+content;}
+	RestClient.prototype.put = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+JSON.stringify(content);}
 	RestClient.prototype.delete = function(urlTemplate,params,content){return "200:"+urlTemplate;}
-	RestClient.prototype.post = function(urlTemplate,params,content){return "200:"+urlTemplate+":"+content.toString();}
-
+	
 	return Class.define(function PlatypusCmdb(urlBase,urlOperation){
 		CmdbBase.call(this,urlBase,urlOperation);
 		this.Init();
+		this.restClient = new RestClient(this.restHost);
+
+		this.Commit = function(transactionId){
+			this.url = this.url.replace("create","commit");
+			var data = {"transactionId" : transactionId	};
+			return this.restClient.post(this.url, [], JSON.stringify(data));
+		}
 	
 		this.Add = function(name,size){
 			var data = { "name":name,"size":size };
-			var restClient = new RestClient(this.restHost);
-			return restClient.put(this.url, [], data);
+			this.restClient.post(this.url, [], data);
+
+			var transactionId = 1;
+
+			return this.Commit(1);
 		}
 
 		this.Delete = function(id){
-			this.url += "/"+id;
 			var restClient = new RestClient(this.restHost);
-			return restClient.delete(this.url, [], null);
+			this.url = this.url.replace("create","delete");
+			var data = {"id":id};
+			restClient.post(this.url, [], data);
+
+			return this.Commit(5);
 		}
 
 	}, null, CmdbBase);
