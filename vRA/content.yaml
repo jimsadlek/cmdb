@@ -1,0 +1,28 @@
+---
+# Example describes export of: 
+#   Blueprint with name "blueprint"
+#   Subscription with name "subscription"
+#   Flavor mappings with names "small" and "medium" in all regions linked to cloud accounts with tag "env:dev"
+#   VRA custom forms listed under vra-custom-form tag
+# 
+# Example describes import of:
+#   All blueprints in src/blueprints
+#   All subscriptions in src/blueprints
+#   All flavor mappings in regions/ into regions linked to cloud accounts with tags "env:dev" or "env:test"
+# Example vra workflow custom forms
+# workflow-custom-form
+#   - Custom Form 1
+#   - Custom Form 2
+
+blueprint:
+  - Agno
+subscription:
+flavor-mapping:
+image-mapping: []
+storage-profile: []
+region-mapping:
+  cloud-account-tags: 
+    export-tag: 
+    import-tags: []
+workflow-custom-form: [Hackathon CMDB Add]
+

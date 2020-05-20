@@ -1,0 +1,8 @@
+id: id
+name: blueprint
+content:
+  formatVersion: 1
+  inputs: {}
+  resources: {}
+description: blueprint description
+requestScopeOrg: false

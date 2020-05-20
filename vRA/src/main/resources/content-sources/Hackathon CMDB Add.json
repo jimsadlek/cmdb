@@ -1,0 +1,29 @@
+{
+  "id": "e2ba9d82-9422-4953-985e-838d0230f664",
+  "name": "Hackathon CMDB Add",
+  "description": null,
+  "typeId": "com.vmw.vro.workflow",
+  "createdAt": "2020-05-16T14:56:19.185Z",
+  "createdBy": "jim",
+  "lastUpdatedAt": "2020-05-20T07:45:12.959Z",
+  "lastUpdatedBy": "system-user",
+  "config": {
+    "workflows": [
+      {
+        "id": "29306cc6-75df-499e-b688-69cc9af51f06",
+        "name": "BenchTest",
+        "version": "0.0.0",
+        "integration": {
+          "name": "embedded-VRO",
+          "endpointUri": "https://vra8.lab.local:443",
+          "endpointConfigurationLink": "/resources/endpoints/d38862fd8f9a84755a37d5fa00f71"
+        }
+      }
+    ]
+  },
+  "itemsImported": 1,
+  "itemsFound": 1,
+  "lastImportStartedAt": "2020-05-20T07:45:12.803Z",
+  "lastImportCompletedAt": "2020-05-20T07:45:12.958Z",
+  "global": true
+}

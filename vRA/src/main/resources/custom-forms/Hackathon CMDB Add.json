@@ -1,0 +1,10 @@
+{
+  "id": "03b193b1-8581-4214-931a-08a83eb7a4d3",
+  "name": "Hackathon CMDB Add",
+  "form": "{\"layout\":{\"pages\":[{\"id\":\"page_general\",\"sections\":[{\"id\":\"section_size\",\"fields\":[{\"id\":\"cmdbType\",\"display\":\"dropDown\",\"state\":{\"visible\":true,\"read-only\":false}}]},{\"id\":\"section_recordName\",\"fields\":[{\"id\":\"recordName\",\"display\":\"textField\",\"state\":{\"visible\":true,\"read-only\":false}}]},{\"id\":\"section_0bd740bf\",\"fields\":[{\"id\":\"size\",\"display\":\"textField\",\"state\":{\"visible\":true,\"read-only\":false}}]}],\"title\":\"General\"}]},\"schema\":{\"cmdbType\":{\"label\":\"cmdbType\",\"type\":{\"dataType\":\"string\",\"isMultiple\":false},\"default\":\"Kangaroo\",\"valueList\":[{\"value\":\"Kangaroo\",\"label\":\"Kangaroo\"},{\"value\":\"Platypus\",\"label\":\"Platypus\"},{\"value\":\"Wombat\",\"label\":\"Wombat\"}]},\"recordName\":{\"label\":\"recordName\",\"type\":{\"dataType\":\"string\",\"isMultiple\":false}},\"size\":{\"label\":\"size\",\"type\":{\"dataType\":\"string\",\"isMultiple\":false}}},\"options\":{\"externalValidations\":[]}}",
+  "styles": null,
+  "sourceType": "com.vmw.vro.workflow",
+  "type": "requestForm",
+  "status": "OFF",
+  "formFormat": "JSON"
+}
