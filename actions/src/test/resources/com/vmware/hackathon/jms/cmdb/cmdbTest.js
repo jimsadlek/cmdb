@@ -27,7 +27,7 @@ describe("CMDB Tests", function() {
 		var cmdb = factory.getCmdb("Platypus",endpointName, username, password);
 
 		expect(cmdb.Add(name,size)).toBe('200:http://platypus.cba.com/api/transaction/commit:{"transactionId":1}');
-		//expect(cmdb.Delete(name,size)).toBe('200:http://platypus.cba.com/api/transaction/commit:{"transactionId":5}');
+		expect(cmdb.Delete(id)).toBe('200:http://platypus.cba.com/api/transaction/commit:{"transactionId":5}');
 	});
 
 	it("Wombat test",function(){
