@@ -5,6 +5,6 @@
   "styles": null,
   "sourceType": "com.vmw.vro.workflow",
   "type": "requestForm",
-  "status": "OFF",
+  "status": "ON",
   "formFormat": "JSON"
 }
